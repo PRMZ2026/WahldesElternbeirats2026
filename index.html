@@ -278,7 +278,28 @@
       border-color: #2b5797;
       box-shadow: 0 0 0 2px rgba(43, 87, 151, 0.1);
     }
+   
+    .send-email-btn {
+      background-color: #2b5797;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 20px;
+    }
     
+    .send-email-btn:hover {
+      background-color: #1e4063;
+    }
+    
+    .send-email-btn:active {
+      background-color: #193050;
+    }
+
     .email-link {
       color: #2b5797;
       text-decoration: none;
@@ -474,6 +495,9 @@
             <label for="email">E-Mail-Adresse:</label>
             <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse">
           </div>
+
+          <button type="button" class="send-email-btn" id="sendEmailBtn">Send Email</button>
+
         </div>
         
         <p>Sie können uns diese Informationen ganz unkompliziert per E-Mail an <a href="mailto:elternbeirat-schule@prmz.de" class="email-link">elternbeirat-schule@prmz.de</a> senden oder den ausgefüllten Abschnitt Ihrem Kind mit in die Schule/SVE geben.</p>
@@ -503,8 +527,32 @@
           this.parentElement.classList.remove('focused');
         });
       });
+      
+      // Add Send Email button functionality
+      const sendEmailBtn = document.getElementById('sendEmailBtn');
+      if (sendEmailBtn) {
+        sendEmailBtn.addEventListener('click', function() {
+          const name = document.getElementById('name').value;
+          const telefon = document.getElementById('telefon').value;
+          const email = document.getElementById('email').value;
+          
+          // Check if all fields are filled
+          if (!name || !telefon || !email) {
+            alert('Bitte füllen Sie alle Felder aus.');
+            return;
+          }
+          
+          // Construct the email body
+          const emailBody = 'Name: ' + encodeURIComponent(name) + '%0D%0A' +
+                           'Telefon: ' + encodeURIComponent(telefon) + '%0D%0A' +
+                           'E-Mail: ' + encodeURIComponent(email);
+          
+          // Construct and open the mailto link
+          const mailtoLink = 'mailto:elternbeirat-schule@prmz.de?subject=Kandidatur_EB_2026&body=' + emailBody;
+          window.location.href = mailtoLink;
+        });
+      }
     });
   </script>
-
 
 </body>
