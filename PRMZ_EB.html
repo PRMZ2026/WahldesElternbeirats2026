@@ -1,0 +1,510 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https:; font-src data:;">
+  <title>Elternbeirat | Pater-Rupert-Mayer-Zentrum</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background-color: #fff;
+    }
+    
+    /* Header Section */
+    .header {
+      position: relative;
+      height: 140px;
+      overflow: hidden;
+      background: #fff;
+    }
+    
+    .header-curves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .blue-curve {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 120px;
+    }
+    
+    .orange-curve {
+      position: absolute;
+      top: 20px;
+      right: 15%;
+      width: 35%;
+      height: 100px;
+    }
+    
+    .header-slogan {
+      position: absolute;
+      top: 35px;
+      left: 40px;
+      color: #fff;
+      font-style: italic;
+      font-size: 1.4rem;
+      font-weight: 500;
+      z-index: 10;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    
+    .logo-area {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      text-align: right;
+      z-index: 10;
+    }
+    
+    .logo-figures {
+      display: flex;
+      justify-content: flex-end;
+      gap: 3px;
+      margin-bottom: 5px;
+    }
+    
+    .figure {
+      width: 18px;
+      height: 35px;
+      border-radius: 50% 50% 45% 45%;
+    }
+    
+    .figure-red { background: #c41e3a; }
+    .figure-orange { background: #e8a33c; }
+    .figure-blue { background: #2b5797; }
+    .figure-green { background: #5a8f3e; }
+    
+    .logo-title {
+      color: #9c1a1f;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    
+    .logo-tagline {
+      color: #e8a33c;
+      font-size: 0.7rem;
+      font-weight: 500;
+      max-width: 280px;
+    }
+    
+    /* Navigation */
+    .nav-bar {
+      background: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+      padding: 0 20px;
+    }
+    
+    .nav-list {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-item {
+      position: relative;
+    }
+    
+    .nav-link {
+      display: block;
+      padding: 12px 18px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    
+    .nav-link:hover {
+      background: #e5e5e5;
+    }
+    
+    .nav-link.has-dropdown::after {
+      content: " ▾";
+      font-size: 0.7rem;
+      color: #666;
+    }
+    
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 15px 30px;
+      font-size: 0.85rem;
+      color: #666;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .breadcrumb a {
+      color: #2b5797;
+      text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+    
+    .breadcrumb span {
+      color: #999;
+      margin: 0 8px;
+    }
+    
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 30px 50px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 40px;
+    }
+    
+    .content-area {
+      max-width: 800px;
+    }
+    
+    .page-title {
+      color: #9c1a1f;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+    
+    .content-text {
+      color: #444;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    
+    .content-text p {
+      margin-bottom: 15px;
+    }
+    
+    .bullet-list {
+      list-style: none;
+      margin: 20px 0 25px 0;
+      padding-left: 5px;
+    }
+    
+    .bullet-list li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 12px;
+      color: #444;
+    }
+    
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #9c1a1f;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+    
+    .bullet-list strong {
+      color: #333;
+    }
+    
+    .signature {
+      margin-top: 30px;
+      color: #444;
+    }
+    
+    .signature p {
+      margin-bottom: 5px;
+    }
+    
+    /* Form Section */
+    .form-section {
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 25px 30px;
+      margin-top: 35px;
+    }
+    
+    .form-section h2 {
+      color: #9c1a1f;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .form-section p {
+      color: #444;
+      margin-bottom: 15px;
+    }
+    
+    .form-fields {
+      margin: 20px 0;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .form-group input {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: #2b5797;
+      box-shadow: 0 0 0 2px rgba(43, 87, 151, 0.1);
+    }
+    
+    .email-link {
+      color: #2b5797;
+      text-decoration: none;
+    }
+    
+    .email-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      padding-top: 60px;
+    }
+    
+    .sidebar-image {
+      background: linear-gradient(135deg, #e8a33c 0%, #f4c67d 50%, #2b5797 50%, #5a8f3e 100%);
+      border-radius: 12px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hands-icon {
+      width: 120px;
+      height: 120px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        padding-top: 20px;
+        max-width: 300px;
+      }
+      
+      .header-slogan {
+        font-size: 1.1rem;
+        left: 20px;
+        top: 25px;
+      }
+      
+      .logo-area {
+        right: 15px;
+      }
+      
+      .logo-title {
+        font-size: 1rem;
+      }
+      
+      .logo-tagline {
+        font-size: 0.6rem;
+        max-width: 200px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .nav-list {
+        flex-direction: column;
+      }
+      
+      .nav-link {
+        padding: 10px 15px;
+      }
+      
+      .header {
+        height: 180px;
+      }
+      
+      .header-slogan {
+        font-size: 0.95rem;
+        max-width: 180px;
+      }
+      
+      .main-content {
+        padding: 15px;
+      }
+      
+      .page-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-curves">
+      <!-- Blue Curve -->
+      <svg class="blue-curve" viewBox="0 0 600 120" preserveAspectRatio="none">
+        <path d="M0,0 L0,120 Q300,80 600,100 L600,0 Z" fill="#2b5797"></path>
+      </svg>
+      <!-- Orange Curve -->
+      <svg viewBox="0 0 350 100" preserveAspectRatio="none">
+        <path d="M0,50 Q100,0 200,30 Q300,60 350,20 L350,100 Q250,60 150,80 Q50,100 0,70 Z" fill="#e8a33c"></path>
+      </svg>
+    </div>
+    
+    <div class="header-slogan">Entdecke, was in dir steckt!</div>
+    
+    <div class="logo-area">
+      
+      <div class="logo-title">Pater-Rupert-Mayer-Zentrum</div>
+      <div class="logo-tagline">Privates Förderzentrum mit Schwerpunkt körperlich-motorische Entwicklung</div>
+    </div>
+  </header>
+  
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <ul class="nav-list" id="navList">
+      <li class="nav-item"><a href="#" class="nav-link" role="menuitem">PRMZ</a></li>
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </nav>
+  
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="#">PRMZ</a>
+    <span>&gt;</span>
+    Elternbeirat
+  </div>
+  
+  <!-- Main Content -->
+  <main class="main-content">
+    <article class="content-area">
+      <h1 class="page-title">Wahl des Elternbeirats 2026</h1>
+      
+      <div class="content-text">
+        <p>Liebe Eltern und Erziehungsberechtigte unserer Schüler*innen im PRMZ,</p>
+        
+        <p>demnächst steht im PRMZ wieder die Wahl des Elternbeirats an, die alle zwei Jahre stattfindet.</p>
+        
+        <p>Gerade in der heutigen Zeit – und besonders für uns Eltern von Kindern mit besonderem Förderbedarf – ist es oft nicht leicht, die Zeit für ein solches Ehrenamt aufzubringen. Umso wichtiger ist es, dass wir uns gegenseitig unterstützen und gemeinsam etwas bewegen.</p>
+        
+        <p>Damit Sie sich ein Bild machen können, hier ein kurzer Überblick über die Aufgaben des Elternbeirats:</p>
+      </div>
+      
+      <ul class="bullet-list">
+        <li><strong>Bindeglied:</strong> Vermittlung und enge Zusammenarbeit zwischen Eltern und Schule</li>
+        <li><strong>Interessenvertretung:</strong> Wahrnehmung und Weiterleitung von Elternanliegen</li>
+        <li><strong>Informationsfluss:</strong> Austausch über aktuelle Belange und Entwicklungen der Schule</li>
+        <li><strong>Unterstützung:</strong> Anschaffungen und Hilfen ermöglichen, welche die Schule allein nicht tragen kann</li>
+        <li><strong>Gemeinschaft:</strong> Mitwirkung und Organisation von Festen wie dem Sommerfest und dem Adventsmarkt</li>
+      </ul>
+      
+      <div class="content-text">
+        <p>Wir treffen uns etwa fünfmal im Schuljahr. Bei diesen Treffen planen wir Projekte, beraten über Anträge von Eltern, tauschen Informationen über Schule und Internat aus und diskutieren aktuelle Themen. Durch dieses Engagement verliert die Schule an Anonymität und wir Eltern wachsen enger zusammen.</p>
+        
+        <p>Haben wir Ihr Interesse geweckt? Über jede Unterstützung im künftigen Elternbeirat freuen wir uns sehr! Für offene Fragen zur Wahl stehen wir Ihnen vorab auch gerne persönlich zur Verfügung.</p>
+        
+        <p>Zudem bitten wir Sie, von Ihrem Wahlrecht Gebrauch zu machen und damit über die zukünftige Zusammensetzung unseres Elternbeirats mitzubestimmen.</p>
+        
+        <p>Die Wahl wird als Briefwahl in der Woche vom 5.-9. Oktober 2026 durchgeführt. Sie erhalten dazu zeitnah einen separaten Elternbrief mit allen genauen Informationen.</p>
+        
+        <p>Herzlichen Dank, dass Sie sich die Zeit zum Lesen genommen haben. Wir freuen uns auf Ihre Rückmeldungen und Ihre Bereitschaft zur Mitwirkung!</p>
+      </div>
+      
+      <div class="signature">
+        <p>Herzliche Grüße,</p>
+        <p><strong>Cornelia Graßl</strong></p>
+        <p>Erste Vorsitzende des Elternbeirats</p>
+      </div>
+      
+      <!-- Form Section -->
+      <section class="form-section">
+        <h2>Sie möchten für den Elternbeirat kandidieren?</h2>
+        
+        <p>Das freut uns sehr! Bitte lassen Sie uns Ihre Bereitschaft bis zum 25. September 2026 mit nachfolgenden Angaben zukommen:</p>
+        
+        <div class="form-fields">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Ihr vollständiger Name">
+          </div>
+          
+          <div class="form-group">
+            <label for="telefon">Telefonnummer:</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="Ihre Telefonnummer">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-Mail-Adresse:</label>
+            <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse">
+          </div>
+        </div>
+        
+        <p>Sie können uns diese Informationen ganz unkompliziert per E-Mail an <a href="mailto:elternbeirat-schule@prmz.de" class="email-link">elternbeirat-schule@prmz.de</a> senden oder den ausgefüllten Abschnitt Ihrem Kind mit in die Schule/SVE geben.</p>
+      </section>
+    </article>
+    
+    <!-- Sidebar -->
+    
+  </main>
+  
+  <script>
+    // Add hover effects and accessibility improvements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add keyboard navigation support for nav items
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(function(link) {
+        link.setAttribute('role', 'menuitem');
+      });
+      
+      // Add form field focus styling
+      const formInputs = document.querySelectorAll('.form-group input');
+      formInputs.forEach(function(input) {
+        input.addEventListener('focus', function() {
+          this.parentElement.classList.add('focused');
+        });
+        input.addEventListener('blur', function() {
+          this.parentElement.classList.remove('focused');
+        });
+      });
+    });
+  </script>
+
+
+</body>
